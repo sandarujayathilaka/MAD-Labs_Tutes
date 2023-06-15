@@ -3,6 +3,7 @@ package com.example.tutorial_03
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -22,7 +23,8 @@ class MainActivity : AppCompatActivity() {
         edtNumber2 = findViewById(R.id.edtNumber2)
     }
 
-    fun buttonClick(v: View){
+    fun buttonClicks(v: View){
+
         var ans = 0.0
         val calculator = Calculator(edtNumber1.text.toString().toDouble(),edtNumber2.text.toString().toDouble())
         when(v.id){
@@ -37,10 +39,12 @@ class MainActivity : AppCompatActivity() {
             R.id.btnMinus -> {
                 ans = calculator.subtract()
 
-                val intent = Intent(this, Activity_2::class.java)
-                intent.putExtra("answer", ans)
+                val intent = Intent(this,Activity_2::class.java)
+                intent.putExtra("answer",ans)
                 startActivity(intent)
                 finish()
+
+
             }
             R.id.btnMultiply ->{
                 ans = calculator.multiply()

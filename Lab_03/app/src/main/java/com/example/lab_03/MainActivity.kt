@@ -11,37 +11,37 @@ import androidx.databinding.DataBindingUtil
 import com.example.lab_03.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        val edtName:EditText = binding.edtName
-        val edtEmail:EditText = binding.edtEmail
-        val edtPhone:EditText = binding.edtPhone
-        val edtPassword:EditText = binding.edtPassword
-        val edtRePassword: EditText = binding.edtRePassword
-        val btnSubmit:Button = binding.btnSubmit
-        val btnCancel: Button = binding.btnCancel
+       binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        //The purpose of this line of code is to create an instance of the ActivityMainBinding class,
+        // which provides direct references to the views in the layout file. This allows the activity
+        // to access and manipulate the views in the layout without having to call the findViewById()
+        // method for each view. After this line of code, the binding variable will refer to the instance of the ActivityMainBinding class,
+//     and can be used to access the views in the layout file. For example, binding.textView would refer to the
+//     TextView defined in the layout file with an android:id attribute of @+id/textView.
 
-        btnSubmit.setOnClickListener {
+        binding.btnSubmit.setOnClickListener {
             showAlertBox(
                 this,
-                edtName.text.toString(),
-                edtEmail.text.toString(),
-                edtPhone.text.toString(),
-                edtPassword.text.toString(),
-                edtRePassword.text.toString()
+                binding.edtName.text.toString(),
+                binding.edtEmail.text.toString(),
+                binding.edtPhone.text.toString(),
+                binding.edtPassword.text.toString(),
+                binding.edtRePassword.text.toString()
             )
         }
 
-        btnCancel.setOnClickListener{
-            edtName.setText("")
-            edtEmail.setText("")
-            edtPhone.setText("")
-            edtPassword.setText("")
-            edtRePassword.setText("")
+        binding.btnCancel.setOnClickListener{
+            binding.edtName.setText("")
+            binding.edtEmail.setText("")
+            binding.edtPhone.setText("")
+            binding.edtPassword.setText("")
+            binding.edtRePassword.setText("")
         }
 
 
@@ -69,9 +69,6 @@ class MainActivity : AppCompatActivity() {
         val dialog = builder.create()
         dialog.show()
     }
-
-
-
 
 
 }
